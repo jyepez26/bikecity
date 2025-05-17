@@ -11,9 +11,17 @@ body {
 
 header{
   display: flex;
-  gap: 1em;
-  align-items: baseline;
-  margin-left: auto;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-left: auto; */
+  padding: 1em;
+  gap: 40em;
+}
+header h1{
+  margin: 0;
+}
+header label{
+  text-align: right;
 }
 header label em{
   margin-left: auto;
@@ -40,4 +48,41 @@ header label em{
 #map svg circle{
   fill-opacity: 60%;
   pointer-events: auto;
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+}
+
+.legend{
+  color: gray;
+  font-size: 15px;
+  display: flex;
+  flex: 1;
+  margin-block: 1em;
+  gap: 2em;
+}
+.legend div{
+  flex: 1;
+  padding: 0.7em;
+  width: 250px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+.legend div[data-ratio="1"]{
+  color: white;
+  background-color: steelblue;
+}
+.legend div[data-ratio="0.5"]{
+  color: white;
+  background-color: plum;
+}
+.legend div[data-ratio="0"]{
+  color: white;
+  background-color: darkorange;
 }
